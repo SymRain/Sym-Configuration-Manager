@@ -1,0 +1,10 @@
+source = $(top_builddir)/property/kvmanager.cpp
+source += $(top_builddir)/file/normalfile.cpp
+head = common.h
+head += $(top_builddir)/property/kvmanager.h $(top_builddir)/property/property.h
+head += $(top_builddir)/file/filemanage.h $(top_builddir)/file/normalfile.h
+AUTOMAKE_OPTIONS=foreign
+lib_LIBRARIES=libSymConfigManager.a
+libSymConfigManager_a_SOURCES=$(source)
+noinst_HEADERS=$(head)
+include_HEADERS= symconfigmanager.h sympropertymanage.h
