@@ -36,7 +36,7 @@ public:
 private:
     void ReadFile(FileManager& file,std::map<std::string,std::string> map);
 public:
-    static PropertyManager& Create();
+    static PropertyManager* Create();
     
 };
 #endif

@@ -4,7 +4,7 @@
 
 struct ManagerNode
 {
-    PropertyManager&(*Create)();
+    PropertyManager*(*Create)();
     std::string type;
 };
 
@@ -14,7 +14,7 @@ private:
     static const int managercount;
     static ManagerNode pronode[1];
 public:
-    PropertyManager& GetNewManager(std::string & type);
+    static PropertyManager* GetNewManager(std::string & type);
 };
 
 ManagerNode ConfigManager::pronode[] ={
@@ -23,7 +23,7 @@ ManagerNode ConfigManager::pronode[] ={
 
 const int ConfigManager::managercount=1;
 
-PropertyManager& ConfigManager::GetNewManager(std::string & type)
+PropertyManager* ConfigManager::GetNewManager(std::string & type)
 {
     for(int index=0;index<ConfigManager::managercount;++index)
     {

@@ -128,7 +128,7 @@ bool NormalKVmanager::CloseAllFile()
     delete mapseek;
 }
 
-PropertyManager& NormalKVmanager::Create()
+PropertyManager* NormalKVmanager::Create()
 {
-    return *(new NormalKVmanager);
+    return (new NormalKVmanager);
 }
