@@ -1,5 +1,5 @@
-#include"common.h"
 #include<string>
+#define interface class
 interface PropertyManager
 {
 public:
