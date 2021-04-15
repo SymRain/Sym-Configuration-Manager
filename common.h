@@ -6,7 +6,7 @@ namespace SymCommon
     template <class T>
     struct LinkNode
     {
-        T *data;
+        T data;
         LinkNode *next;
         LinkNode *prev;
     };

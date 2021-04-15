@@ -138,7 +138,8 @@ am__v_AR_0 = @echo "  AR      " $@;
 am__v_AR_1 = 
 libSymConfigManager_a_AR = $(AR) $(ARFLAGS)
 libSymConfigManager_a_LIBADD =
-am__objects_1 = kvmanager.$(OBJEXT) normalfile.$(OBJEXT)
+am__objects_1 = kvmanager.$(OBJEXT) normalfile.$(OBJEXT) \
+	symconfigmanager.$(OBJEXT)
 am_libSymConfigManager_a_OBJECTS = $(am__objects_1)
 libSymConfigManager_a_OBJECTS = $(am_libSymConfigManager_a_OBJECTS)
 AM_V_P = $(am__v_P_$(V))
@@ -223,12 +224,12 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /home/ubuntu/git/Sym-Configuration-Manager/missing aclocal-1.15
+ACLOCAL = ${SHELL} /home/odcc/git/configmanager/missing aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
-AUTOCONF = ${SHELL} /home/ubuntu/git/Sym-Configuration-Manager/missing autoconf
-AUTOHEADER = ${SHELL} /home/ubuntu/git/Sym-Configuration-Manager/missing autoheader
-AUTOMAKE = ${SHELL} /home/ubuntu/git/Sym-Configuration-Manager/missing automake-1.15
+AUTOCONF = ${SHELL} /home/odcc/git/configmanager/missing autoconf
+AUTOHEADER = ${SHELL} /home/odcc/git/configmanager/missing autoheader
+AUTOMAKE = ${SHELL} /home/odcc/git/configmanager/missing automake-1.15
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -256,7 +257,7 @@ LDFLAGS =
 LIBOBJS = 
 LIBS = -lpthread 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/ubuntu/git/Sym-Configuration-Manager/missing makeinfo
+MAKEINFO = ${SHELL} /home/odcc/git/configmanager/missing makeinfo
 MKDIR_P = /bin/mkdir -p
 OBJEXT = o
 PACKAGE = SymConfigManager
@@ -272,10 +273,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = 
 VERSION = 0.0.1
-abs_builddir = /home/ubuntu/git/Sym-Configuration-Manager
-abs_srcdir = /home/ubuntu/git/Sym-Configuration-Manager
-abs_top_builddir = /home/ubuntu/git/Sym-Configuration-Manager
-abs_top_srcdir = /home/ubuntu/git/Sym-Configuration-Manager
+abs_builddir = /home/odcc/git/configmanager
+abs_srcdir = /home/odcc/git/configmanager
+abs_top_builddir = /home/odcc/git/configmanager
+abs_top_srcdir = /home/odcc/git/configmanager
 ac_ct_CC = gcc
 ac_ct_CXX = g++
 am__include = include
@@ -295,7 +296,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/ubuntu/git/Sym-Configuration-Manager/install-sh
+install_sh = ${SHELL} /home/odcc/git/configmanager/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -317,7 +318,7 @@ top_build_prefix =
 top_builddir = .
 top_srcdir = .
 source = $(top_builddir)/property/kvmanager.cpp \
-	$(top_builddir)/file/normalfile.cpp
+	$(top_builddir)/file/normalfile.cpp symconfigmanager.cpp
 head = common.h $(top_builddir)/property/kvmanager.h \
 	$(top_builddir)/property/property.h \
 	$(top_builddir)/file/filemanage.h \
@@ -425,6 +426,7 @@ distclean-compile:
 
 include ./$(DEPDIR)/kvmanager.Po
 include ./$(DEPDIR)/normalfile.Po
+include ./$(DEPDIR)/symconfigmanager.Po
 
 .cpp.o:
 	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

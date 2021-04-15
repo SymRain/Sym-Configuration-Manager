@@ -1,3 +1,5 @@
+#ifndef PROPERTY_MANAGER
+#define PROPERTY_MANAGER
 #include<string>
 #define interface class
 interface PropertyManager
@@ -15,3 +17,4 @@ public:
     virtual bool Operate(std::string& commad)=0;
     //static bool Create()=0; 
 };
+#endif

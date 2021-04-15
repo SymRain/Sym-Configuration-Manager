@@ -1,5 +1,6 @@
 source = $(top_builddir)/property/kvmanager.cpp
 source += $(top_builddir)/file/normalfile.cpp
+source += symconfigmanager.cpp
 head = common.h
 head += $(top_builddir)/property/kvmanager.h $(top_builddir)/property/property.h
 head += $(top_builddir)/file/filemanage.h $(top_builddir)/file/normalfile.h

@@ -138,7 +138,8 @@ am__v_AR_0 = @echo "  AR      " $@;
 am__v_AR_1 = 
 libSymConfigManager_a_AR = $(AR) $(ARFLAGS)
 libSymConfigManager_a_LIBADD =
-am__objects_1 = kvmanager.$(OBJEXT) normalfile.$(OBJEXT)
+am__objects_1 = kvmanager.$(OBJEXT) normalfile.$(OBJEXT) \
+	symconfigmanager.$(OBJEXT)
 am_libSymConfigManager_a_OBJECTS = $(am__objects_1)
 libSymConfigManager_a_OBJECTS = $(am_libSymConfigManager_a_OBJECTS)
 AM_V_P = $(am__v_P_@AM_V@)
@@ -317,7 +318,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 source = $(top_builddir)/property/kvmanager.cpp \
-	$(top_builddir)/file/normalfile.cpp
+	$(top_builddir)/file/normalfile.cpp symconfigmanager.cpp
 head = common.h $(top_builddir)/property/kvmanager.h \
 	$(top_builddir)/property/property.h \
 	$(top_builddir)/file/filemanage.h \
@@ -425,6 +426,7 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kvmanager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/normalfile.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/symconfigmanager.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

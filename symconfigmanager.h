@@ -1,3 +1,5 @@
+#ifndef CONFIG_MANAGER_H
+#define CONFIG_MANAGER_H
 #include<string>
 #include"./sympropertymanage.h"
 
@@ -16,6 +18,6 @@ private:
 public:
     static PropertyManager* GetNewManager(std::string & type);
 };
-
+#endif
 
 

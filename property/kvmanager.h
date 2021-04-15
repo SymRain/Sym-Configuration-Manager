@@ -22,6 +22,7 @@ private:
     const char skip='#';
     const char equal='=';
 public:
+    NormalKVmanager();
     virtual unsigned int OpenFile(std::string path);
     virtual bool CloseFile(unsigned int id);
     virtual bool GetValueInAll(std::string& key,std::string& value);
@@ -34,7 +35,7 @@ public:
     virtual bool Operate(std::string& commad);
     virtual bool CloseAllFile();
 private:
-    void ReadFile(FileManager& file,std::map<std::string,std::string> map);
+    void ReadFile(FileManager& file,std::map<std::string,std::string> &map);
 public:
     static PropertyManager* Create();
     

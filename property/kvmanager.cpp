@@ -8,8 +8,8 @@
 unsigned int NormalKVmanager::OpenFile(std::string path)
 {
     SymCommon::LinkNode<FileNode<FileManager*>>* filenode=new SymCommon::LinkNode<FileNode<FileManager*>>;
-    filenode->data->data = new NormalFileManager;
-    if(!filenode->data->data->Open(path))
+    filenode->data.data = new NormalFileManager;
+    if(!filenode->data.data->Open(path))
     {
         delete filenode;
         return false;
@@ -17,9 +17,9 @@ unsigned int NormalKVmanager::OpenFile(std::string path)
     SymCommon::LinkNode<FileNode<std::map<std::string,std::string>>>* mapnode= new SymCommon::LinkNode<FileNode<std::map<std::string,std::string>>>;
     SymCommon::AddBeforeRoot(this->fileroot,*filenode);
     SymCommon::AddBeforeRoot(this->maproot,*mapnode);
-    mapnode->data->id=filecount;
-    filenode->data->id=filecount++;
-    this->ReadFile(*filenode->data->data,mapnode->data->data);
+    mapnode->data.id=filecount;
+    filenode->data.id=filecount++;
+    this->ReadFile(*filenode->data.data,mapnode->data.data);
     return true;
 }
 
@@ -29,11 +29,11 @@ bool NormalKVmanager::CloseFile(unsigned int id)
     SymCommon::LinkNode<FileNode<std::map<std::string,std::string>>>* mapseek=this->maproot.next;
     while(fileseek!=&this->fileroot)
     {
-        if(fileseek->data->id==id)
+        if(fileseek->data.id==id)
         {
             SymCommon::DelSrc(*fileseek);
             SymCommon::DelSrc(*mapseek);
-            delete fileseek->data->data;
+            delete fileseek->data.data;
             delete fileseek;
             delete mapseek;
             return true;
@@ -50,8 +50,8 @@ bool NormalKVmanager::GetValueInAll(std::string& key,std::string& value)
     
     while(mapseek!=&this->maproot)
     {
-        std::map<std::string,std::string>::iterator iter=mapseek->data->data.find(key);
-        if(iter!=mapseek->data->data.end())
+        std::map<std::string,std::string>::iterator iter=mapseek->data.data.find(key);
+        if(iter!=mapseek->data.data.end())
         {
             value=iter->second;
             return true;
@@ -66,8 +66,8 @@ bool NormalKVmanager::GetValue(std::string& key,std::string& value, unsigned int
     SymCommon::LinkNode<FileNode<std::map<std::string,std::string>>>* mapseek=this->maproot.next;
     while(mapseek!=&this->maproot)
     {
-        std::map<std::string,std::string>::iterator iter=mapseek->data->data.find(key);
-        if(iter!=mapseek->data->data.end())
+        std::map<std::string,std::string>::iterator iter=mapseek->data.data.find(key);
+        if(iter!=mapseek->data.data.end())
         {
             value=iter->second;
             return true;
@@ -77,7 +77,7 @@ bool NormalKVmanager::GetValue(std::string& key,std::string& value, unsigned int
     return false;
 }
 
-void NormalKVmanager::ReadFile(FileManager& file,std::map<std::string,std::string> map)
+void NormalKVmanager::ReadFile(FileManager& file,std::map<std::string,std::string>& map)
 {
     std::string ret;
     while(file.ReadLine(ret)!=-1)
@@ -131,4 +131,13 @@ bool NormalKVmanager::CloseAllFile()
 PropertyManager* NormalKVmanager::Create()
 {
     return (new NormalKVmanager);
+}
+
+NormalKVmanager::NormalKVmanager()
+{
+    this->filecount=0;
+    this->fileroot.next=&(this->fileroot);
+    this->fileroot.prev=&(this->fileroot);
+    this->maproot.next=&(this->maproot);
+    this->maproot.prev=&(this->maproot);
 }
